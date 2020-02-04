@@ -1,0 +1,12 @@
+git apply won't work if:
+ - you are in a untracked sub sub folder
+ - you try to apply a `diff --git` patch
+
+How to reproduce:
+
+./populate.sh
+cd external_srcs/subfolder/
+git apply ../../git_diff.patch
+# It does not have any effect: no patch applied, no error, no message
+git apply ../../patch_diff.patch
+# \o/ it works
